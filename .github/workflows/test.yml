@@ -43,6 +43,10 @@ jobs:
         with:
           node-version: 20
 
+      - name: Setup Laravel application
+        run: |
+          curl -s "https://laravel.build/example-app" | bash
+
       # - name: Configure directories
       #   run: |
       #     mv .env.example .env
