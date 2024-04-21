@@ -43,9 +43,13 @@ jobs:
         with:
           node-version: 20
 
-      - name: Setup Laravel application
+      - name: Install Laravel
         run: |
           curl -s "https://laravel.build/example-app" | bash
+          cd example-app
+          composer require laravel/breeze --dev
+          php artisan breeze:install
+
 
       # - name: Configure directories
       #   run: |
