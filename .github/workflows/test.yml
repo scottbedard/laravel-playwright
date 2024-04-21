@@ -45,11 +45,9 @@ jobs:
 
       - name: Install Laravel
         run: |
-          curl -s "https://laravel.build/example-app" | bash
+          composer create-project laravel/laravel example-app
           cd example-app
-          composer require laravel/breeze --dev
-          php artisan breeze:install
-
+          php artisan migrate:fresh
 
       # - name: Configure directories
       #   run: |
