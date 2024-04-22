@@ -58,7 +58,9 @@ jobs:
           cat composer.json
       
       - name: Create boilerplate
-        run: php artisan playwright:boilerplate
+        run: |
+          cd example-app
+          php artisan playwright:boilerplate
 
       # - name: Start Laravel
       #   run: php artisan serve > /dev/null 2>&1 &
