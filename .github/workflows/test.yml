@@ -51,7 +51,15 @@ jobs:
           php artisan
           php artisan migrate:fresh
           php artisan breeze:install blade --no-interaction
-          php artisan serve > /dev/null 2>&1 &
+
+      - name: Install Package
+        run: |
+          node -p "JSON.stringify({ ...require('./composer.json'), repositories: [] }, null, 2)" > output.json
+          cat composer.json
+          cat output.json
+
+      # - name: Start Laravel
+      #   run: php artisan serve > /dev/null 2>&1 &
 
       # - name: Configure directories
       #   run: |
