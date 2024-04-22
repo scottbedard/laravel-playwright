@@ -50,6 +50,7 @@ jobs:
         run: |
           cd example-app
           npm init playwright -- --quiet --install-deps --gha --browser chromium
+          npm install @playwright/test
 
       - name: Setup Package
         run: |
