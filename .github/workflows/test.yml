@@ -54,8 +54,8 @@ jobs:
 
       - name: Install Package
         run: |
-          node -p "JSON.stringify({ ...require('./composer.json'), repositories: [] }, null, 2)" > output.json
-          cat composer.json
+          pwd
+          node -p "JSON.stringify({ ...require('./composer.json'), repositories: [{ type: 'path', url: '' }] }, null, 2)" > output.json
           cat output.json
 
       # - name: Start Laravel
