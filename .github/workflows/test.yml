@@ -64,8 +64,14 @@ jobs:
           cd example-app
           php artisan playwright:boilerplate
 
-      # - name: Start Laravel
-      #   run: php artisan serve > /dev/null 2>&1 &
+      - name: Start Laravel
+        run: php artisan serve > /dev/null 2>&1 &
+
+      - name: Run tests
+        run: |
+          cd example-app
+          ls -a
+          npx playwright test
 
       # - name: Configure directories
       #   run: |
