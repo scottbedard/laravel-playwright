@@ -22,7 +22,7 @@ test('Can logout the current user', async ({ page }) => {
     expect(userAfter).toBeNull()
 })
 
-test.only('Can execute arbitrary PHP', async ({ page }) => {
+test('Can execute arbitrary PHP', async ({ page }) => {
     await refreshDatabase({ page, parameters: { '--seed': true } })
     const sum = await php({ page, command: '2+2' })
     expect(sum).toEqual(4)
