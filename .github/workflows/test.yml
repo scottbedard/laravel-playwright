@@ -51,7 +51,7 @@ jobs:
           php artisan
           php artisan migrate:fresh
           php artisan breeze:install -h
-          php artisan breeze:install --no-interaction
+          php artisan breeze:install
           php artisan serve > /dev/null 2>&1 &
 
       # - name: Configure directories
