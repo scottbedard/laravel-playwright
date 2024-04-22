@@ -59,18 +59,28 @@ jobs:
           cd example-app
           npm exec playwright install --with-deps
 
-      - name: Create boilerplate
+      - name: Create Boilerplate
         run: |
           cd example-app
           php artisan playwright:boilerplate
 
+      - name: Run Migrations
+        run: |
+          cd example-app
+          php artisan migrate:fresh
+
       - name: Start Laravel
         run: php artisan serve > /dev/null 2>&1 &
 
-      - name: Run tests
+      - name: Unit & Feature tests
         run: |
           cd example-app
-          ls -a
+          php artisan test
+
+      - name: Playwright tests
+        run: |
+          cd example-app
+          ls tests -a
           npx playwright test
 
       # - name: Configure directories
