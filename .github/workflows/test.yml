@@ -22,6 +22,7 @@ jobs:
 
     env:
       APP_URL: "http://127.0.0.1:8000"
+      CI: true
       DB_CONNECTION: mysql
       DB_DATABASE: testing
       DB_HOST: 127.0.0.1
@@ -51,15 +52,16 @@ jobs:
           mkdir ./example-app/e2e
           mv ./src/Controllers/* ./example-app/app/Http/Controllers
           mv ./src/routes/* ./example-app/routes
-          mv ./src/stubs/* ./example-app/e2e
+          mv ./src/stubs/laravel-examples.spec.ts ./example-app/e2e/laravel-examples.spec.ts
+          mv ./src/stubs/laravel-helpers.ts ./example-app/e2e/laravel-helpers.ts
+          mv ./src/stubs/playwright.config.ts ./example-app/playwright.config.ts
 
       - name: Install Playwright
         run: |
           cd example-app
           npm init playwright -- --quiet --install-deps --gha --browser chromium
+          npm install dotenv
           npm install @playwright/test
-          ls -a
-          cat playwright.config.ts
 
       # - name: Setup Package
       #   run: |
