@@ -81,8 +81,7 @@ jobs:
       - name: Playwright tests
         run: |
           cd example-app
-          ls -a
-          npx playwright test
+          npx playwright test e2e/example.spec.ts
 
       # - name: Configure directories
       #   run: |
