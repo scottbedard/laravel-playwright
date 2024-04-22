@@ -48,6 +48,7 @@ jobs:
           composer create-project laravel/laravel example-app
           cd example-app
           composer require laravel/breeze --dev
+          php artisan
           php artisan breeze:install
           php artisan serve > /dev/null 2>&1 &
 
