@@ -49,7 +49,7 @@ jobs:
       - name: Install Playwright
         run: |
           cd example-app
-          npm init playwright@latest
+          npm init playwright -- --quiet --install-deps --gha --browser chromium
 
       - name: Setup Package
         run: |
