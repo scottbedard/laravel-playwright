@@ -63,13 +63,13 @@ jobs:
           npm install dotenv
           npm install @playwright/test
 
-      # - name: Setup Package
-      #   run: |
-      #     cd example-app
-      #     mv composer.json composer.old.json
-      #     node -p "JSON.stringify({ ...require('./composer.old.json'), repositories: [{ type: 'path', url: '../' }] }, null, 2)" > composer.json
-      #     composer require "web-id/laravel-playwright @dev"
-      #     cat composer.json
+      - name: Setup Package
+        run: |
+          cd example-app
+          mv composer.json composer.old.json
+          node -p "JSON.stringify({ ...require('./composer.old.json'), repositories: [{ type: 'path', url: '../' }] }, null, 2)" > composer.json
+          composer require "web-id/laravel-playwright @dev"
+          cat composer.json
 
       # - name: Create Boilerplate
       #   run: |
@@ -91,32 +91,4 @@ jobs:
           cd example-app
           php artisan serve > /dev/null 2>&1 &
           npx playwright test
-
-      # - name: Configure directories
-      #   run: |
-      #     mv .env.example .env
-      #     chmod -R 777 ./storage ./bootstrap/cache
-
-      # - name: Composer install
-      #   run: composer install
-
-      # - name: Generate application key
-      #   run: php artisan key:generate
-
-      # - name: Publish assets
-      #   run: php artisan vendor:publish --force
-
-      # - name: Run migrations
-      #   run: php artisan migrate:fresh
-
-      # - name: Unit & Feature tests
-      #   run: php artisan test
-
-      # - name: Serve application
-      #   run: php artisan serve > /dev/null 2>&1 &
-
-      # - name: Install Playwright
-      #   run: npm exec playwright install --with-deps
-
-      # - name: E2E tests
-      #   run: npm test
+          
