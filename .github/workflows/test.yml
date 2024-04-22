@@ -57,7 +57,7 @@ jobs:
       - name: Install Playwright
         run: |
           cd example-app
-          npm exec playwright install --with-deps
+          npm init playwright@latest
 
       - name: Create Boilerplate
         run: |
