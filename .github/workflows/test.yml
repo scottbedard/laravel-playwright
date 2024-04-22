@@ -46,17 +46,18 @@ jobs:
       - name: Install Laravel
         run: composer create-project laravel/laravel example-app
 
+      - name: Unpack Boilerplate
+        run: |
+          mkdir ./example-app/e2e
+          mv ./src/Controllers/* ./example-app/app/Http/Controllers
+          mv ./src/routes/* ./example-app/routes
+          mv ./src/stubs/* ./example-app/e2e
+
       - name: Install Playwright
         run: |
           cd example-app
           npm init playwright -- --quiet --install-deps --gha --browser chromium
           npm install @playwright/test
-
-      - name: Setup Package
-        run: |
-          mv ./src/Controllers/* ./example-app/app/Http/Controllers
-          mv ./src/routes/* ./example-app/routes
-          mv ./src/stubs/* ./example-app/e2e
 
       # - name: Setup Package
       #   run: |
