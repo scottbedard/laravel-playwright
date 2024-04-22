@@ -48,7 +48,7 @@ jobs:
           composer create-project laravel/laravel example-app
           cd example-app
           php artisan
-          php artisan migrate:fresh
+          php artisan serve > /dev/null 2>&1 &
 
       # - name: Configure directories
       #   run: |
