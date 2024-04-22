@@ -50,8 +50,7 @@ jobs:
           composer require laravel/breeze --dev
           php artisan
           php artisan migrate:fresh
-          php artisan breeze:install -h
-          php artisan breeze:install
+          php artisan breeze:install blade --no-interaction
           php artisan serve > /dev/null 2>&1 &
 
       # - name: Configure directories
