@@ -43,9 +43,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Playwright
-        run: npm exec playwright install --with-deps
-
       - name: Install Laravel
         run: composer create-project laravel/laravel example-app
 
@@ -56,7 +53,12 @@ jobs:
           node -p "JSON.stringify({ ...require('./composer.old.json'), repositories: [{ type: 'path', url: '../' }] }, null, 2)" > composer.json
           composer require "web-id/laravel-playwright @dev"
           cat composer.json
-      
+
+      - name: Install Playwright
+        run: |
+          cd example-app
+          npm exec playwright install --with-deps
+
       - name: Create boilerplate
         run: |
           cd example-app
