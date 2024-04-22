@@ -7,7 +7,7 @@ export default defineConfig({
   fullyParallel: true,
   reporter: 'html',
   retries: process.env.CI ? 2 : 0,
-  testDir: './tests/e2e',
+  testDir: './e2e',
   use: {
     baseURL: process.env.APP_URL,
     testIdAttribute: 'data-pw',
