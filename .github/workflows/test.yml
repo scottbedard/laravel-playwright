@@ -54,16 +54,22 @@ jobs:
 
       - name: Setup Package
         run: |
-          cd example-app
-          mv composer.json composer.old.json
-          node -p "JSON.stringify({ ...require('./composer.old.json'), repositories: [{ type: 'path', url: '../' }] }, null, 2)" > composer.json
-          composer require "web-id/laravel-playwright @dev"
-          cat composer.json
+          mv ./src/Controllers/* ./example-app/app/Http/Controllers
+          mv ./src/routes/* ./example-app/routes
+          mv ./src/stubs/* ./example-app/e2e
 
-      - name: Create Boilerplate
-        run: |
-          cd example-app
-          php artisan playwright:boilerplate
+      # - name: Setup Package
+      #   run: |
+      #     cd example-app
+      #     mv composer.json composer.old.json
+      #     node -p "JSON.stringify({ ...require('./composer.old.json'), repositories: [{ type: 'path', url: '../' }] }, null, 2)" > composer.json
+      #     composer require "web-id/laravel-playwright @dev"
+      #     cat composer.json
+
+      # - name: Create Boilerplate
+      #   run: |
+      #     cd example-app
+      #     php artisan playwright:boilerplate
 
       - name: Run Migrations
         run: |
@@ -81,7 +87,7 @@ jobs:
       - name: Playwright tests
         run: |
           cd example-app
-          npx playwright test e2e/example.spec.ts
+          npx playwright test e2e
 
       # - name: Configure directories
       #   run: |
