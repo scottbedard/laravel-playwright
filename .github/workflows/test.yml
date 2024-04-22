@@ -54,9 +54,10 @@ jobs:
 
       - name: Install Package
         run: |
-          pwd
-          node -p "JSON.stringify({ ...require('./composer.json'), repositories: [{ type: 'path', url: '' }] }, null, 2)" > output.json
-          cat output.json
+          cd example-app
+          mv composer.json composer.old.json
+          node -p "JSON.stringify({ ...require('./composer.old.json'), repositories: [{ type: 'path', url: '/home/runner/work/laravel-playwright/laravel-playwright' }] }, null, 2)" > output.json
+          cat composer.json
 
       # - name: Start Laravel
       #   run: php artisan serve > /dev/null 2>&1 &
